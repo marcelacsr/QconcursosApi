@@ -1,0 +1,11 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  # Include common Ruby source files.
+  Include:
+    - '**/*.rb'
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**'
+    - 'bin/**/*'
+    - 'config/**/*'
