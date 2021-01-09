@@ -69,6 +69,7 @@ Metrics/PerceivedComplexity:
 # Offense count: 3
 Style/Documentation:
   Exclude:
+    - 'db/**/*'
     - 'spec/**/*'
     - 'test/**/*'
     - 'app/mailers/application_mailer.rb'
