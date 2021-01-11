@@ -11,11 +11,12 @@ class QuestionAccessServices
     query.map { |k, v| { question_id: k, times_accessed: v } }
   end
 
+  private
+
   def query
     query ||= QuestionAccess.by_year(year_to_date(year)) if year
     query ||= QuestionAccess.by_month(month_to_date(month)) if month
     query ||= QuestionAccess.by_week(week.to_date) if week
-
     query.group(:question_id).sum(:times_accessed)
   end
 
