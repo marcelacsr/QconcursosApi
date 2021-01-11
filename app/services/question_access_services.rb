@@ -17,6 +17,9 @@ class QuestionAccessServices
     query ||= QuestionAccess.by_year(year_to_date(year)) if year
     query ||= QuestionAccess.by_month(month_to_date(month)) if month
     query ||= QuestionAccess.by_week(week.to_date) if week
+
+    return [] if query.blank?
+
     query.group(:question_id).sum(:times_accessed)
   end
 

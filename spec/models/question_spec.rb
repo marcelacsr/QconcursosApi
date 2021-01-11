@@ -19,15 +19,21 @@ RSpec.describe Question, type: :model do
   end
 
   describe 'scopes' do
-    let!(:question) { FactoryBot.create_list :question, 5 }
+    let!(:questions) { FactoryBot.create_list :question, 2, discipline: 'disc_1', daily_access: 5 }
+    let!(:questions2) { FactoryBot.create_list :question, 2, discipline: 'disc_2', daily_access: 10 }
 
     describe '#order_sum_by_discipline' do
       let(:scope) { Question.order_sum_by_discipline }
+      let(:result) do
+        {
+          'disc_2' => questions2.map(&:daily_access).sum,
+          'disc_1' => questions.map(&:daily_access).sum
+        }
+      end
 
       it { expect(scope).to be_present }
-      it { expect(scope.count).to be 5 }
-      # esta ordenado? TODO
-      it { expect(scope).to eq(Question.all.group(:discipline).order('sum_daily_access DESC').sum(:daily_access)) }
+      it { expect(scope.count).to be 2 }
+      it { expect(scope).to eq result }
     end
   end
 end
