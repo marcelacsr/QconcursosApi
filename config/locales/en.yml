@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  question_accesses_controller:
+    index:
+      missing_params: Params year, month or week is missing.
