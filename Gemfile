@@ -32,6 +32,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
   gem 'pry'
+  gem 'rspec-rails', '~> 4.0.2'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'rspec-html-matchers'
 end
 
 group :development do
