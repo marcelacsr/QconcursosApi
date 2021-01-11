@@ -1,7 +1,8 @@
 class QuestionAccessesController < ApplicationController
   def index
-    # tratar caso params nil
     render json: service.search.to_json
+  rescue StandardError => e
+    render json: { erro: { message: e.message } }
   end
 
   private
