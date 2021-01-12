@@ -1,7 +1,11 @@
+return if Question.exists?
+
 response = HTTParty.get('https://raw.githubusercontent.com/qcx/desafio-backend/master/questions.json')
 
 questions = JSON.parse(response)
-questions.each do |q|
+questions.each_with_index do |q, idx|
+  Rails.logger.info("#{idx} Questions processed") if (idx % 100).zero?
+
   Question.find_or_create_by(
     id: q['id'],
     statement: q['statement'],

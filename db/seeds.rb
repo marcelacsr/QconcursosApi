@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Dir[Rails.root.join('db/seeds/*.rb')].sort.each do |file|
-  puts "Processing #{file.split('/').last}"
+  Rails.logger.info "Processing #{file.split('/').last}"
   require file
-  puts "Processed #{file.split('/').last}"
+  Rails.logger.info "Processed #{file.split('/').last}"
 end

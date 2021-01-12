@@ -46,6 +46,8 @@ then
   # Run migrations or set up the database if it doesn't exist
   # Rails >= 6
   bin/bundle exec rails db:prepare
+  bin/bundle exec rails db:seed
+
   # Rails < 6
   # bundle exec rake db:migrate 2>/dev/null || bundle exec rake db:setup
 

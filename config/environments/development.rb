@@ -43,7 +43,7 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   config.logger = Logger.new(STDOUT)
-  config.log_level = :warn # In any environment initializer, or
+  config.log_level = :info # In any environment initializer, or
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
