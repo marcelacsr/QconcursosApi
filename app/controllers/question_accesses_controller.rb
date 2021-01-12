@@ -3,6 +3,8 @@ class QuestionAccessesController < ApplicationController
 
   def index
     render json: service.search.to_json
+  rescue ArgumentError
+    render json: { error: I18n.t('question_accesses_controller.index.invalid_params') }, status: 400
   end
 
   private

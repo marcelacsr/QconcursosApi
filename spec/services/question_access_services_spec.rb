@@ -17,7 +17,7 @@ RSpec.describe QuestionAccessServices do
 
     describe '#search' do
       let(:year) { Date.today.year.to_s }
-      let(:month) { Date.today.to_s } # strftime
+      let(:month) { "#{Date.today.year}-#{Date.today.month.to_s.rjust(2, '0')}" }
       let(:week) { Date.today.to_s }
 
       context 'when all params' do
