@@ -1,11 +1,14 @@
 # README
 
 #### How to run (Docker Compose)
-Prerequisites: www.docker.com/get-started
+Prerequisites: 
+- Docker
+- Docker Compose
+
 With docker we can build the app.
 The following command will build 
 the application image and MySQL 
-instances, and start a container 
+instance, and start a container 
 for the API, which will run on 
 port 3000.
 ```
@@ -17,18 +20,17 @@ The app will load the json files from:
 
 #### Tests
 
-Run tests with the following command, coverage can be found inside '..doc/coverage'
-after the test suite has been run.
-In container's BASH run:
+Run tests with the following command, coverage can be found inside '../coverage'  
+after the test suite has been run and is currently at **100%**.  
+Inside container's BASH(`docker-compose run --rm app bash`) run:
 ```
-bin/rails rspec
+RAILS_ENV=test rails db:create
+rails db:test:prepare
+rspec
 ```
 
 ### API endpoints
-
-- Disciplinas com questões mais quentes: 
-
-Listar as disciplinas onde as questões foram as mais acessadas nas ultimas 24H
+- Most accessed question's disciplines in the last 24 hours 
 
 
 1. http://localhost:3000/questions
@@ -77,17 +79,11 @@ Listar as disciplinas onde as questões foram as mais acessadas nas ultimas 24H
 ]
 ```
 
-- Mais acessadas por periodo: 
+- Most accessed questions: 
 
-Listar as questões mais acessadas por semana/mês/ano
+by week/month/year
 
 
-1. Without params: http://localhost:3000/question_accesses
-```
-{
-    "error": "Params year, month or week is missing."
-}
-```
 2. Year params: http://localhost:3000/question_accesses?year=2019
 ```
 [
@@ -181,16 +177,4 @@ Listar as questões mais acessadas por semana/mês/ano
     }, ...
 ]
 
-```
-6. Param year=nil: http://localhost:3000/question_accesses?year=nil
-```
-{
-    "error": "Invalid parameter format."
-}
-```
-7. Param year= empty: http://localhost:3000/question_accesses?year=
-```
-{
-    "error": "Params year, month or week is missing."
-}
 ```
